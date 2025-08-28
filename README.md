@@ -1,4 +1,4 @@
-# 🎙️ Generador de Voz con IA – SweetMoon11
+# 🎙️ Generador de Voz con IA 
 
 Este proyecto es una aplicación web desarrollada con **Streamlit** que convierte texto en voz utilizando la API de **OpenAI**. Ideal para contenido VTuber, narraciones automatizadas, o herramientas educativas con estilo.
 
