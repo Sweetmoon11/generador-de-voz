@@ -1,7 +1,3 @@
-requests
-pillow
-numpy
-pandas
-matplotlib
-flask
-opencv-python
+streamlit
+openai
+python-dotenv
