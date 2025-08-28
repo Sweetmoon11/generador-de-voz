@@ -1,54 +1,27 @@
-import streamlit as st
-import os 
-from dotenv import load_dotenv, find_dotenv
-#variables de entorno
-from openai import OpenAI 
-#Modelo de lenguaje natural
+# 🎙️ Generador de Voz con IA – SweetMoon11
 
-#cargar archivo env
-load_dotenv(find_dotenv(), override=True)
+Este proyecto es una aplicación web desarrollada con **Streamlit** que convierte texto en voz utilizando la API de **OpenAI**. Ideal para contenido VTuber, narraciones automatizadas, o herramientas educativas con estilo.
 
-apiKey = os.environ.get("OPENAI_API_KEY")
-#se crea un cliente de openai
-client = OpenAI(api_key=apiKey)
+## 🚀 Características
 
-#opciones de voz 
-voices = ["alloy", "antoni", "bella", "camila", "dario", "eric", "gabriela", "jose", "lucia", "maria", "nicolas", "sara"]
+- Interfaz web simple y funcional
+- Selección de voz entre múltiples opciones (español e inglés)
+- Conversión de texto a audio en formato `.mp3`
+- Reproducción directa del audio generado
 
-#vamos a hacer un titulo para nuestra aplicacion 
+## 🧰 Tecnologías utilizadas
 
-st.title("Generador de voz con IA")
+- [Python 3.10+](https://www.python.org/)
+- [Streamlit](https://streamlit.io/)
+- [OpenAI API](https://platform.openai.com/)
+- [python-dotenv](https://pypi.org/project/python-dotenv/)
 
-#ahora generamos un cuadro de texto para que el usuario pueda ingresar el texto que desea convertir a voz
-text = st.text_area("Ingrese el texto que desea convertir a voz", height=200)
+## 📦 Instalación
 
-#selector de voz 
-
-voice = st.selectbox("Seleccione la voz", voices)
-
-#boton para generar la voz
-if st.button("Generar voz"):
-    if text:
-        #generamos la voz
-        response = client.audio.speech.create(
-            model="tts-1",
-            voice=voice,
-            input=text
-        )
-        audio_path = "audio.mp3"
-        with open(audio_path, "wb") as output_file:
-            for chunk in response.iter_bytes():
-                output_file.write(chunk)
-        st.success("Voz generada con exito en {audio_path}")
-
-        audio_file = open(audio_path, "rb")
-        audio_bytes = audio_file.read()
-        st.audio(audio_bytes, format="audio/mp3")
-    else:
-        st.error("por favor ingrese un texto") 
-- Crea un entorno virtual (opcional pero recomendado):
-        python -m venv venv
-        source venv/bin/activate  # En Windows: venv\Scripts\activate
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/sweetmoon11/python.git
+   cd python
   
  - Instala las dependencias:
 pip install -r requirements.txt
